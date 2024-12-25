@@ -1,0 +1,257 @@
+Examle-1..............
+CREATE TABLE address(
+       id int() PRIMARY KEY AUTO_INCREMENT,
+       name varchar(255) NOT NULL,
+       email varchar(255) NOT NULL,
+       location varchar(255) NOT NULL,
+       a_id int() NOT NULL,
+       FOREIGN KEY(a_id) REFERENCES address(id)
+
+)
+
+Examle-2..............
+INSERT INTO students(name, age, email , a_id)VALUES
+("Tuhin", 1, "a@gmail.com", 23),
+("Ramin", 2, "r@gmail.com", 21),
+("Habib", 3, "h@gmail.com", 34);
+
+Examle-3..............
+SELECT name FROM student;
+
+Examle-4..............
+SELECT DISTINCT  name FROM student;
+
+Examle-5..............
+SELECT * FROM `my` WHERE name = 'yeasin';
+
+Examle-6..............
+SELECT * FROM `my` WHERE price > 15;
+
+Examle-7..............
+SELECT * FROM `my` WHERE price BETWEEN 10 AND 15;
+
+Examle-8..............
+SELECT * FROM `my` WHERE price LIKE '1%';
+
+
+Examle-9..............
+SELECT * FROM `my` WHERE price IN(15 , 17);
+
+Examle-10..............
+SELECT * FROM chart WHERE country = 'India' AND city = 'Dilli';
+
+Examle-11..............
+SELECT * FROM chart WHERE country = 'India' OR city = 'Dhaka';
+
+
+Examle-12..............
+SELECT * FROM chart WHERE NOT country = 'India';
+
+
+Examle-13..............
+SELECT * FROM chart WHERE country = 'Bangladesh' AND (country = 'Dilli' OR city = 'Dhaka');
+
+
+Examle-14..............
+SELECT * FROM chart WHERE NOT country = 'India' AND NOT city = 'Dilli';
+
+
+Examle-15..............
+SELECT * FROM `my` ORDER BY name DESC;
+
+
+Examle-16..............
+SELECT * FROM `my` ORDER BY name ASC , price DESC;
+
+
+Examle-17..............
+INSERT INTO my 
+VALUES('a', '10');
+
+
+Examle-18..............
+INSERT INTO my(name, price)
+ VALUES('b', '40');
+
+
+
+Examle-19..............
+SELECT * FROM `chart` WHERE city IS NULL;
+
+
+Examle-20..............
+SELECT * FROM `chart` WHERE city IS NOT NULL;
+
+
+Examle-21..............
+UPDATE Customers
+SET name = 'yeasin', City = 'dhaka'
+WHERE id = 6;
+
+
+Examle-22..............
+DELETE FROM my WHERE id = 6;
+
+
+Examle-23..............
+SELECT * FROM `my` LIMIT 4;
+
+
+Examle-24..............
+SELECT * FROM `my` WHERE name = 'b' LIMIT 4;
+
+
+Examle-25..............
+SELECT * FROM `my` LIMIT 4 OFFSET 3;
+
+
+Examle-26..............
+SELECT MIN(price) AS Lowest price FROM `my`;
+
+
+Examle-27..............
+SELECT MAX(price) AS Highestprice FROM `my`;
+
+
+Examle-28..............
+SELECT COUNT(id)FROM `my`;
+
+
+Examle-29..............
+SELECT AVG(price)FROM `my`;
+
+
+Examle-30..............
+SELECT SUM(price)FROM `my`;
+
+
+Examle-31..............
+SELECT * FROM `chart` WHERE city LIKE '%a%';
+
+
+Examle-32..............
+SELECT * FROM `chart` WHERE city LIKE 'G%i';
+
+
+Examle-33..............
+SELECT * FROM `chart` WHERE city LIKE '_h%';
+
+
+Examle-34..............
+SELECT * FROM `chart` WHERE city LIKE 'G_%';
+
+
+Examle-35..............
+SELECT * FROM `chart` WHERE city IN('Dhaka','Gaji','Khulna');
+
+
+Examle-36..............
+SELECT * FROM `chart` WHERE city NOT IN('Dhaka','Gaji','Khulna');
+
+
+Examle-37..............
+SELECT * FROM chart
+WHERE name IN (SELECT name FROM my);
+
+
+Examle-38..............
+SELECT * FROM my
+WHERE Price BETWEEN 10 AND 20
+AND id NOT IN (1,2,3);
+
+
+Examle-39..............
+SELECT * FROM my
+WHERE name BETWEEN 'a' AND 'e'
+ORDER BY name;
+
+
+Examle-40..............
+
+SELECT * FROM my
+WHERE name NOT BETWEEN 'a' AND 'e'
+ORDER BY name;
+
+Examle-41..............
+SELECT name AS Customer, id AS "Contact Id"
+FROM my;
+
+
+Examle-42..............
+SELECT Orders.id, Customers.name, Orders.date
+FROM Orders
+INNER JOIN my ON Orders.id=my.id;
+
+
+Examle-43..............
+CASE
+    WHEN a1 THEN b1
+    WHEN a2 THEN b2
+    WHEN c THEN d
+    ELSE result
+END;
+
+
+Examle-44..............
+SELECT name, city, country
+FROM my
+ORDER BY
+(CASE
+    WHEN city IS NULL THEN country
+    ELSE city
+END);
+
+
+
+Examle-45..............
+INSERT INTO t2
+SELECT * FROM t1
+WHERE condition;
+
+
+
+
+Examle-46..............
+INSERT INTO my (name, city, country)
+SELECT city, country FROM order;
+
+
+
+Examle-47..............
+SELECT name
+FROM my
+WHERE name operator ANY
+  (SELECT order
+  FROM my
+  WHERE condition);
+
+
+
+
+Examle-48..............
+SELECT ALL name
+FROM my
+WHERE condition;
+
+
+
+
+Examle-49..............
+SELECT name
+FROM my
+WHERE EXISTS
+(SELECT id FROM order WHERE condition);
+
+
+
+
+Examle-50..............
+SELECT COUNT(id), country
+FROM my
+GROUP BY country
+HAVING COUNT(id) > 5;
+
+
+
+
+
